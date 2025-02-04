@@ -13,9 +13,9 @@ def all_species(filename):
 
     unique_species = set()
 
-    read_data = open(filename)
+    read_file = open(filename)
 
-    for line in read_data:
+    for line in read_file:
         species = line.rstrip().split("|")[1]
         unique_species.add(species)
     
@@ -35,9 +35,9 @@ def get_villagers_by_species(filename, search_string="All"):
 
     villagers = []
 
-    read_villager_names = open(filename)
+    read_file = open(filename)
 
-    for line in read_villager_names:
+    for line in read_file:
         name, species = line.rstrip().split("|")[0:2]
 
         if search_string in ("All", species):
@@ -56,9 +56,32 @@ def all_names_by_hobby(filename):
         - list[list[str]]: a list of lists containing names
     """
 
-    # TODO: replace this with your code
+    fitness = []
+    nature = []
+    education = []
+    music = []
+    fashion = []
+    play = []
 
-    return []
+    read_file = open(filename)
+
+    for line in read_file:
+        name, hobby = line.rstrip().split("|")[0:4:3]
+
+        if hobby == "Fitness":
+            sorted(fitness.append(name))
+        elif hobby == "Nature":
+            sorted(nature.append(name))
+        elif hobby == "Education":
+            sorted(education.append(name))
+        elif hobby == "Music":
+            sorted(music.append(name))
+        elif hobby == "Fashion":
+            sorted(fashion.append(name))
+        elif hobby == "Play":
+            sorted(play.append(name))
+
+    return [fitness, nature, education, music, fashion, play]
 
 
 def all_data(filename):
