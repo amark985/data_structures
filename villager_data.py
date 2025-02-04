@@ -18,8 +18,6 @@ def all_species(filename):
     for line in read_data:
         species = line.rstrip().split("|")[1]
         unique_species.add(species)
-
-        print(unique_species)
     
     return unique_species
 
@@ -37,8 +35,14 @@ def get_villagers_by_species(filename, search_string="All"):
 
     villagers = []
 
-    # TODO: replace this with your code
+    read_villager_names = open(filename)
 
+    for line in read_villager_names:
+        name, species = line.rstrip().split("|")[0:2]
+
+        if search_string in ("All", species):
+            villagers.append(name)
+            
     return sorted(villagers)
 
 
