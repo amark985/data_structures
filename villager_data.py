@@ -11,10 +11,17 @@ def all_species(filename):
         - set[str]: a set of strings
     """
 
-    species = set("villagers.csv")
-    print(species)
+    unique_species = set()
+
+    read_data = open(filename)
+
+    for line in read_data:
+        species = line.rstrip().split("|")[1]
+        unique_species.add(species)
+
+        print(unique_species)
     
-    return species
+    return unique_species
 
 
 def get_villagers_by_species(filename, search_string="All"):
