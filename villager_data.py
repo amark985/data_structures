@@ -69,19 +69,20 @@ def all_names_by_hobby(filename):
         name, hobby = line.rstrip().split("|")[0:4:3]
 
         if hobby == "Fitness":
-            sorted(fitness.append(name))
+            fitness.append(name)
         elif hobby == "Nature":
-            sorted(nature.append(name))
+            nature.append(name)
         elif hobby == "Education":
-            sorted(education.append(name))
+            education.append(name)
         elif hobby == "Music":
-            sorted(music.append(name))
+            music.append(name)
         elif hobby == "Fashion":
-            sorted(fashion.append(name))
+            fashion.append(name)
         elif hobby == "Play":
-            sorted(play.append(name))
+            play.append(name)
 
-    return [fitness, nature, education, music, fashion, play]
+    return [sorted(fitness), sorted(nature), sorted(education),
+             sorted(music), sorted(fashion), sorted(play)]
 
 
 def all_data(filename):
@@ -99,7 +100,11 @@ def all_data(filename):
 
     all_data = []
 
-    # TODO: replace this with your code
+    read_file = open(filename)
+
+    for line in read_file():
+        all_data_tuple = tuple(line.rstrip().split("|"))
+        all_data.append(all_data_tuple)
 
     return all_data
 
