@@ -11,16 +11,17 @@ def all_species(filename):
         - set[str]: a set of strings
     """
 
-    unique_species = set()
+    species = set()
 
     read_file = open(filename)
 
     for line in read_file:
-        species = line.rstrip().split("|")[1]
-        unique_species.add(species)
+        unique_species = line.rstrip().split("|")[1]
+        species.add(unique_species)
     
-    return unique_species
+    return species
 
+all_species("villagers.csv")
 
 def get_villagers_by_species(filename, search_string="All"):
     """Return a list of villagers' names by species.
@@ -44,6 +45,8 @@ def get_villagers_by_species(filename, search_string="All"):
             villagers.append(name)
             
     return sorted(villagers)
+
+get_villagers_by_species("villagers.csv", "All")
 
 
 def all_names_by_hobby(filename):
@@ -84,6 +87,7 @@ def all_names_by_hobby(filename):
     return [sorted(fitness), sorted(nature), sorted(education),
              sorted(music), sorted(fashion), sorted(play)]
 
+all_names_by_hobby("villagers.csv")
 
 def all_data(filename):
     """Return all the data in a file.
@@ -102,12 +106,13 @@ def all_data(filename):
 
     read_file = open(filename)
 
-    for line in read_file():
+    for line in read_file:
         all_data_tuple = tuple(line.rstrip().split("|"))
         all_data.append(all_data_tuple)
 
     return all_data
 
+all_data("villagers.csv")
 
 def find_motto(filename, villager_name):
     """Return the villager's motto.
@@ -122,8 +127,18 @@ def find_motto(filename, villager_name):
     Return:
         - str: the villager's motto or None
     """
+    read_file = open(filename)
 
-    # TODO: replace this with your code
+    for line in read_file:
+        name = line.rstrip().split("|")[0]
+        motto = line.rstrip().split("|")[4]
+
+        if name == villager_name:
+            return motto
+    
+    return None
+
+find_motto("villagers.csv", "Ash")
 
 
 def find_likeminded_villagers(filename, villager_name):
